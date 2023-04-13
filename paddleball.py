@@ -24,7 +24,13 @@ canvas = Canvas(tk, width=500, height=500, bd=0, highlightthickness=0)
 canvas.pack()
 tk.update()
 
-input("fsd")
+ball = Ball(canvas, "red")
+
+# infinite loop in order not to close game window
+while 1:
+    tk.update_idletasks()
+    tk.update()
+    time.sleep(0.01)
 
 
 
