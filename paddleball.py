@@ -12,6 +12,7 @@ class Ball:
         self.x = starts[0]
         self.y = -3
         self.canvas_height = self.canvas.winfo_height()
+        self.canvas_width = self.canvas.winfo_width()
 
     def draw(self):
         self.canvas.move(self.id, self.x, self.y)
@@ -20,6 +21,10 @@ class Ball:
             self.y = 1
         if pos[3] >= self.canvas_height:
             self.y = -1
+        if pos[0] <= 0:
+            self.x = 1
+        if pos[2] >= self.canvas_width:
+            self.x = -1
 
 
 
