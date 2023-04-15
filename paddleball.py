@@ -61,6 +61,12 @@ class Paddle:
     def turn_right(self, evt):
         self.x = 2
 
+class Counter:
+    def __init__(self, canvas, color):
+        self.canvas = canvas
+        self.text = "Your Score: %s"
+        self.id = canvas.create_text(400, 15, text="Your Score: ", fill=color, font=("Times", -15))
+
 tk = Tk()
 # set name of the game window
 tk.title("Game")
@@ -75,6 +81,7 @@ tk.update()
 
 paddle = Paddle(canvas, "blue")
 ball = Ball(canvas, paddle, "red")
+counter = Counter(canvas, "green")
 
 # Main loop - infinite loop in order not to close game window
 while 1:
