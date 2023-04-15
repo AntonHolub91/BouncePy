@@ -96,14 +96,20 @@ canvas.pack()
 tk.update()
 
 score = Score(canvas, "green")
+# end_game = End_game(canvas, "red")
 paddle = Paddle(canvas, "blue")
 ball = Ball(canvas, paddle, score, "red")
+game_over_text = canvas.create_text(250, 200, text="Game Over", state="hidden", fill="red", font=("Times", -40))
+
 
 # Main loop - infinite loop in order not to close game window
 while 1:
     if ball.hit_bottom == False and paddle.started == True:
         ball.draw()
         paddle.draw()
+    if ball.hit_bottom == True:
+        time.sleep(1)
+        canvas.itemconfig(game_over_text, state='normal')
     tk.update_idletasks()
     tk.update()
     time.sleep(0.01)
