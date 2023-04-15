@@ -14,6 +14,7 @@ class Ball:
         self.y = -3
         self.canvas_height = self.canvas.winfo_height()
         self.canvas_width = self.canvas.winfo_width()
+        self.hit_bottom = False
 
     def hit_paddle(self, pos):
         paddle_pos = self.canvas.coords(self.paddle.id)
@@ -27,6 +28,8 @@ class Ball:
         pos = self.canvas.coords(self.id)
         if pos[1] <= 0:
             self.y = 2
+        if pos[3] >= self.canvas_height:
+            self.hit_bottom = True
         if pos[3] >= self.canvas_height:
             self.y = -2
         if self.hit_paddle(pos) == True:
@@ -77,8 +80,9 @@ ball = Ball(canvas, paddle, "red")
 
 # Main loop - infinite loop in order not to close game window
 while 1:
-    ball.draw()
-    paddle.draw()
+    if ball.hit_bottom == False:
+        ball.draw()
+        paddle.draw()
     tk.update_idletasks()
     tk.update()
     time.sleep(0.01)
