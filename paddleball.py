@@ -37,9 +37,9 @@ class Ball:
         if self.hit_paddle(pos) == True:
             self.y = -3
         if pos[0] <= 0:
-            self.x = 3
+            self.x = 2
         if pos[2] >= self.canvas_width:
-            self.x = -3
+            self.x = -2
 
 
 class Paddle:
@@ -52,6 +52,7 @@ class Paddle:
         self.started = False
         self.canvas.bind_all('<KeyPress-Left>', self.turn_left)
         self.canvas.bind_all('<KeyPress-Right>', self.turn_right)
+        self.canvas.bind_all('<KeyPress-Down>', self.stop_move)
         self.canvas.bind_all('<Button-1>', self.start_game)
 
     def draw(self):
@@ -67,6 +68,9 @@ class Paddle:
 
     def turn_right(self, evt):
         self.x = 2
+
+    def stop_move(self, evt):
+        self.x = 0
 
     def start_game(self, ev):
         self.started = True
