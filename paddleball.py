@@ -22,7 +22,9 @@ class Ball:
         paddle_pos = self.canvas.coords(self.paddle.id)
         if pos[2] >= paddle_pos[0] and pos[0] <= paddle_pos[2]:
             if pos[3] >= paddle_pos[1] and pos[3] <= paddle_pos[3]:
-                self.x += self.paddle.x
+                random_acseleration = [self.paddle.x - 1, self.paddle.x - 1, self.paddle.x + 1]
+                random.shuffle(random_acseleration)
+                self.x = self.x + random_acseleration[0]
                 self.score.hit()
                 return True
         return False
@@ -104,7 +106,7 @@ score = Score(canvas, "green")
 # end_game = End_game(canvas, "red")
 paddle = Paddle(canvas, "blue")
 ball = Ball(canvas, paddle, score, "red")
-game_over_text = canvas.create_text(250, 200, text="Game Over", state="hidden", fill="red", font=("Times", -40))
+game_over_text = canvas.create_text(250, 200, text="GAME OVER", state="hidden", fill="red", font=("Times", -40))
 
 
 # Main loop - infinite loop in order not to close game window
