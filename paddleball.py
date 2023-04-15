@@ -99,16 +99,6 @@ while 1:
     if ball.hit_bottom == False:
         ball.draw()
         paddle.draw()
-        print("qqqqq")
     tk.update_idletasks()
     tk.update()
     time.sleep(0.01)
-
-print(ball.hit_paddle)
-print(counter.score)
-counter.count_score()
-print(counter.score)
-print(counter.counter_text)
-counter.count_score()
-print(counter.score)
-print(counter.counter_text)
