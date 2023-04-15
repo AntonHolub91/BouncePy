@@ -27,11 +27,9 @@ class Ball:
         self.canvas.move(self.id, self.x, self.y)
         pos = self.canvas.coords(self.id)
         if pos[1] <= 0:
-            self.y = 2
+            self.y = 3
         if pos[3] >= self.canvas_height:
             self.hit_bottom = True
-        if pos[3] >= self.canvas_height:
-            self.y = -2
         if self.hit_paddle(pos) == True:
             self.y = -3
         if pos[0] <= 0:
