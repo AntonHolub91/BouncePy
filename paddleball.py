@@ -18,14 +18,22 @@ class Ball:
         self.canvas.move(self.id, self.x, self.y)
         pos = self.canvas.coords(self.id)
         if pos[1] <= 0:
-            self.y = 1
+            self.y = 2
         if pos[3] >= self.canvas_height:
-            self.y = -1
+            self.y = -2
         if pos[0] <= 0:
-            self.x = 1
+            self.x = 3
         if pos[2] >= self.canvas_width:
-            self.x = -1
+            self.x = -3
 
+class Paddle:
+    def __init__(self, canvas, color):
+        self.canvas = canvas
+        self.id = canvas.create_rectangle(0, 0, 100, 10, fill=color)
+        self.canvas.move(self.id, 200, 300)
+
+    def draw(self):
+        pass
 
 
 tk = Tk()
